@@ -14,6 +14,10 @@ interface HeadingProps {
 const StyledRightPane = styled.div`
   padding: 2rem;
   background: #fafafa;
+  position: absolute;
+  right: 0;
+  top: 0;
+  width: 60%;
 `;
 
 const Header = styled.div<HeaderProps>`
@@ -82,7 +86,8 @@ const PlaygroundCard = styled.div`
   align-items: center;
   padding: 0.6rem;
   gap: 1rem;
-  box-shadow: 0px 0px 12px -3px rgba(0, 0, 0, 0.35);
+  box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
 `;
 
 const SmallLogo = styled.img`
@@ -103,6 +108,7 @@ const Icons = styled.div`
   display: flex;
   gap: 0.5rem;
   font-size: 1.25rem;
+  padding-right: 1rem;
 `;
 
 const RightPane = () => {
@@ -116,6 +122,231 @@ const RightPane = () => {
           <span>+</span> New Folder
         </AddButton>
       </Header>
+
+      <Folder>
+        <Header variant='folder'>
+          <Heading size='small'>Data Structures</Heading>
+          <AddButton>
+            <span>+</span> New Playground
+          </AddButton>
+        </Header>
+
+        <CardContainer>
+          <PlaygroundCard>
+            <SmallLogo src='/logo-small.png' alt='' />
+            <CardContent>
+              <h5>Stack Implementation</h5>
+              <p>Language: C++</p>
+            </CardContent>
+            <Icons>
+              <IoTrashOutline />
+              <BiEditAlt />
+            </Icons>
+          </PlaygroundCard>
+          <PlaygroundCard>
+            <SmallLogo src='/logo-small.png' alt='' />
+            <CardContent>
+              <h5>Stack Implementation</h5>
+              <p>Language: C++</p>
+            </CardContent>
+            <Icons>
+              <IoTrashOutline />
+              <BiEditAlt />
+            </Icons>
+          </PlaygroundCard>
+          <PlaygroundCard>
+            <SmallLogo src='/logo-small.png' alt='' />
+            <CardContent>
+              <h5>Stack Implementation</h5>
+              <p>Language: C++</p>
+            </CardContent>
+            <Icons>
+              <IoTrashOutline />
+              <BiEditAlt />
+            </Icons>
+          </PlaygroundCard>
+        </CardContainer>
+      </Folder>
+
+      <Folder>
+        <Header variant='folder'>
+          <Heading size='small'>Data Structures</Heading>
+          <AddButton>
+            <span>+</span> New Playground
+          </AddButton>
+        </Header>
+
+        <CardContainer>
+          <PlaygroundCard>
+            <SmallLogo src='/logo-small.png' alt='' />
+            <CardContent>
+              <h5>Stack Implementation</h5>
+              <p>Language: C++</p>
+            </CardContent>
+            <Icons>
+              <IoTrashOutline />
+              <BiEditAlt />
+            </Icons>
+          </PlaygroundCard>
+          <PlaygroundCard>
+            <SmallLogo src='/logo-small.png' alt='' />
+            <CardContent>
+              <h5>Stack Implementation</h5>
+              <p>Language: C++</p>
+            </CardContent>
+            <Icons>
+              <IoTrashOutline />
+              <BiEditAlt />
+            </Icons>
+          </PlaygroundCard>
+          <PlaygroundCard>
+            <SmallLogo src='/logo-small.png' alt='' />
+            <CardContent>
+              <h5>Stack Implementation</h5>
+              <p>Language: C++</p>
+            </CardContent>
+            <Icons>
+              <IoTrashOutline />
+              <BiEditAlt />
+            </Icons>
+          </PlaygroundCard>
+        </CardContainer>
+      </Folder>
+
+      <Folder>
+        <Header variant='folder'>
+          <Heading size='small'>Data Structures</Heading>
+          <AddButton>
+            <span>+</span> New Playground
+          </AddButton>
+        </Header>
+
+        <CardContainer>
+          <PlaygroundCard>
+            <SmallLogo src='/logo-small.png' alt='' />
+            <CardContent>
+              <h5>Stack Implementation</h5>
+              <p>Language: C++</p>
+            </CardContent>
+            <Icons>
+              <IoTrashOutline />
+              <BiEditAlt />
+            </Icons>
+          </PlaygroundCard>
+          <PlaygroundCard>
+            <SmallLogo src='/logo-small.png' alt='' />
+            <CardContent>
+              <h5>Stack Implementation</h5>
+              <p>Language: C++</p>
+            </CardContent>
+            <Icons>
+              <IoTrashOutline />
+              <BiEditAlt />
+            </Icons>
+          </PlaygroundCard>
+          <PlaygroundCard>
+            <SmallLogo src='/logo-small.png' alt='' />
+            <CardContent>
+              <h5>Stack Implementation</h5>
+              <p>Language: C++</p>
+            </CardContent>
+            <Icons>
+              <IoTrashOutline />
+              <BiEditAlt />
+            </Icons>
+          </PlaygroundCard>
+        </CardContainer>
+      </Folder>
+
+      <Folder>
+        <Header variant='folder'>
+          <Heading size='small'>Data Structures</Heading>
+          <AddButton>
+            <span>+</span> New Playground
+          </AddButton>
+        </Header>
+
+        <CardContainer>
+          <PlaygroundCard>
+            <SmallLogo src='/logo-small.png' alt='' />
+            <CardContent>
+              <h5>Stack Implementation</h5>
+              <p>Language: C++</p>
+            </CardContent>
+            <Icons>
+              <IoTrashOutline />
+              <BiEditAlt />
+            </Icons>
+          </PlaygroundCard>
+          <PlaygroundCard>
+            <SmallLogo src='/logo-small.png' alt='' />
+            <CardContent>
+              <h5>Stack Implementation</h5>
+              <p>Language: C++</p>
+            </CardContent>
+            <Icons>
+              <IoTrashOutline />
+              <BiEditAlt />
+            </Icons>
+          </PlaygroundCard>
+          <PlaygroundCard>
+            <SmallLogo src='/logo-small.png' alt='' />
+            <CardContent>
+              <h5>Stack Implementation</h5>
+              <p>Language: C++</p>
+            </CardContent>
+            <Icons>
+              <IoTrashOutline />
+              <BiEditAlt />
+            </Icons>
+          </PlaygroundCard>
+        </CardContainer>
+      </Folder>
+
+      <Folder>
+        <Header variant='folder'>
+          <Heading size='small'>Data Structures</Heading>
+          <AddButton>
+            <span>+</span> New Playground
+          </AddButton>
+        </Header>
+
+        <CardContainer>
+          <PlaygroundCard>
+            <SmallLogo src='/logo-small.png' alt='' />
+            <CardContent>
+              <h5>Stack Implementation</h5>
+              <p>Language: C++</p>
+            </CardContent>
+            <Icons>
+              <IoTrashOutline />
+              <BiEditAlt />
+            </Icons>
+          </PlaygroundCard>
+          <PlaygroundCard>
+            <SmallLogo src='/logo-small.png' alt='' />
+            <CardContent>
+              <h5>Stack Implementation</h5>
+              <p>Language: C++</p>
+            </CardContent>
+            <Icons>
+              <IoTrashOutline />
+              <BiEditAlt />
+            </Icons>
+          </PlaygroundCard>
+          <PlaygroundCard>
+            <SmallLogo src='/logo-small.png' alt='' />
+            <CardContent>
+              <h5>Stack Implementation</h5>
+              <p>Language: C++</p>
+            </CardContent>
+            <Icons>
+              <IoTrashOutline />
+              <BiEditAlt />
+            </Icons>
+          </PlaygroundCard>
+        </CardContainer>
+      </Folder>
 
       <Folder>
         <Header variant='folder'>
