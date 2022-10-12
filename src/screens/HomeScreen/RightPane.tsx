@@ -1,7 +1,8 @@
-import React from "react";
+import React, { useContext } from "react";
 import styled from "styled-components";
 import { IoTrashOutline } from "react-icons/io5";
 import { BiEditAlt } from "react-icons/bi";
+import { ModalContext } from "../../context/ModalContext";
 
 interface HeaderProps {
   readonly variant: string;
@@ -112,6 +113,9 @@ const Icons = styled.div`
 `;
 
 const RightPane = () => {
+  const ModalFeatures = useContext(ModalContext);
+  const setIsOpen = ModalFeatures?.setIsOpen;
+
   return (
     <StyledRightPane>
       <Header variant='main'>
@@ -140,7 +144,11 @@ const RightPane = () => {
             </CardContent>
             <Icons>
               <IoTrashOutline />
-              <BiEditAlt />
+              <BiEditAlt
+                onClick={() => {
+                  if (setIsOpen) setIsOpen(true);
+                }}
+              />
             </Icons>
           </PlaygroundCard>
           <PlaygroundCard>

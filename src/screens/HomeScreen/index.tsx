@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useContext, useState } from "react";
 import LeftPane from "./LeftPane";
 import RightPane from "./RightPane";
 import styled from "styled-components";
+import Modal from "../../components/Modal";
+import { ModalContext } from "../../context/ModalContext";
 
 const HomeScreenContainer = styled.div`
   position: relative;
@@ -10,10 +12,14 @@ const HomeScreenContainer = styled.div`
 `;
 
 const HomeScreen = () => {
+  const ModalFeatures = useContext(ModalContext);
+  const isOpen = ModalFeatures?.isOpen;
+
   return (
     <HomeScreenContainer>
       <LeftPane />
       <RightPane />
+      {isOpen === true ? <Modal /> : <></>}
     </HomeScreenContainer>
   );
 };
