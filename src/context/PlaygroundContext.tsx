@@ -43,6 +43,48 @@ export interface FolderType {
   [key: string]: FolderT;
 }
 
+export const languageMap = {
+  cpp: {
+    editorLang: "text/x-c++src",
+    languageId: 54,
+    defaultText:
+      "# include <iostream>\n" +
+      "\n" +
+      "int main() {\n" +
+      "    // your code here\n" +
+      "    return 0;\n" +
+      "}",
+  },
+  c: {
+    editorLang: "c",
+    languageId: 50,
+    defaultText:
+      "#include <stdio.h> // header file for Standard Input Output\n" +
+      "#include <stdlib.h> // header file for Standard Library\n" +
+      "\n" +
+      "int main() {\n" +
+      "\n" +
+      "    //Your code here\n" +
+      "    return 0;\n" +
+      "}",
+  },
+  python: {
+    editorLang: "python",
+    languageId: 71,
+    defaultText: "# your code here",
+  },
+  javascript: {
+    editorLang: "javascript",
+    languageId: 63,
+    defaultText: "// your code here",
+  },
+  java: {
+    editorLang: "text/x-java",
+    languageId: 62,
+    defaultText: `import java.util.*;\nimport java.lang.*;\nimport java.io.*;\n\npublic class Main\n{\n\tpublic static void main (String[] args) throws java.lang.Exception\n\t{\n\t\t//your code here\n\t}\n}`,
+  },
+};
+
 const initialItems = {
   [uuid()]: {
     title: "Folder Title 1",
@@ -82,9 +124,10 @@ const initialItems = {
 
 export default function PlaygroundProvider({ children }: { children: any }) {
   const [folders, setFolders] = useState(() => {
-    const localData = JSON.parse(
+    let localData = JSON.parse(
       localStorage.getItem("playground-data") as string
     );
+    localData = Object.keys(localData).length === 0 ? null : localData;
     return localData || initialItems;
   });
 
