@@ -4,6 +4,7 @@ import { IoTrashOutline } from "react-icons/io5";
 import { BiEditAlt } from "react-icons/bi";
 import { ModalContext } from "../../context/ModalContext";
 import { PlaygroundContext } from "../../context/PlaygroundContext";
+import { useNavigate } from "react-router-dom";
 
 interface HeaderProps {
   readonly variant: string;
@@ -91,6 +92,12 @@ const PlaygroundCard = styled.div`
   gap: 1rem;
   box-shadow: 0px 0px 10px 1px rgba(0, 0, 0, 0.1);
   border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.08s ease;
+
+  &:hover {
+    opacity: 0.75;
+  }
 `;
 
 const SmallLogo = styled.img`
@@ -120,6 +127,9 @@ const FolderButtons = styled.div`
 `;
 
 const RightPane = () => {
+  // initialize useNavigate
+  const navigate = useNavigate();
+
   const makeAvailableGlobally = useContext(ModalContext)!;
   const { openModal } = makeAvailableGlobally;
 
@@ -196,13 +206,22 @@ const RightPane = () => {
             <CardContainer>
               {Object.entries(folder.items).map(
                 ([cardId, card]: [cardId: string, card: any]) => (
-                  <PlaygroundCard>
+                  <PlaygroundCard
+                    onClick={() => {
+                      // navigate to playground page
+                      navigate(`/code/${folderId}/${cardId}`);
+                    }}
+                  >
                     <SmallLogo src='/logo-small.png' alt='' />
                     <CardContent>
                       <h5>{card.title}</h5>
                       <p>Language: {card.language}</p>
                     </CardContent>
-                    <Icons>
+                    <Icons
+                      onClick={(e) => {
+                        e.stopPropagation(); // stop click propogation from child to parent
+                      }}
+                    >
                       <IoTrashOutline
                         onClick={() => {
                           // DELETE CARD

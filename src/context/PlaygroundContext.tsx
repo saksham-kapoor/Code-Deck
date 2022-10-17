@@ -82,10 +82,11 @@ const initialItems = {
 
 export default function PlaygroundProvider({ children }: { children: any }) {
   const [folders, setFolders] = useState(() => {
-    const localData = JSON.parse(
+    let localData = JSON.parse(
       localStorage.getItem("playground-data") as string
     );
-    return localData || initialItems;
+    localData = Object.keys(localData).length === 0 ? null : localData;
+    return localData || initialItems; // null || anything -> anything
   });
 
   // save all data in local storage
