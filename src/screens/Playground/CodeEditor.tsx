@@ -15,6 +15,15 @@ import { python } from "@codemirror/lang-python";
 // configuration
 import { indentUnit } from "@codemirror/language";
 import { EditorState } from "@codemirror/state";
+import styled from "styled-components";
+
+const CodeEditorContainer = styled.div`
+  height: calc(100vh - 12.5rem);
+
+  & > div {
+    height: 100%;
+  }
+`;
 
 const CodeEditor = () => {
   // code editor configuration
@@ -22,9 +31,10 @@ const CodeEditor = () => {
   const [lang, setLang] = useState<any>(python);
 
   return (
-    <div>
+    <CodeEditorContainer>
       <CodeMirror
         theme={theme}
+        height='100%'
         extensions={[
           lang,
           indentUnit.of("        "),
@@ -57,7 +67,7 @@ const CodeEditor = () => {
           lintKeymap: true,
         }}
       />
-    </div>
+    </CodeEditorContainer>
   );
 };
 
