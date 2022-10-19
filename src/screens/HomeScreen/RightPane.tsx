@@ -16,7 +16,7 @@ interface HeadingProps {
 
 const StyledRightPane = styled.div`
   padding: 2rem;
-  background: red;
+  background: #fafafa;
   position: absolute;
   right: 0;
   top: 0;
