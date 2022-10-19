@@ -16,7 +16,7 @@ interface HeadingProps {
 
 const StyledRightPane = styled.div`
   padding: 2rem;
-  background: #fafafa;
+  background: red;
   position: absolute;
   right: 0;
   top: 0;
@@ -69,7 +69,6 @@ const AddButton = styled.button`
   transition: all 0.25s ease;
   &:hover {
     opacity: 0.75;
-    scale: 1.1;
   }
 `;
 
@@ -142,7 +141,7 @@ const RightPane = () => {
     <StyledRightPane>
       <Header variant='main'>
         <Heading size='large'>
-          My <span>Playground</span>
+          My <span>Playgrounds</span>
         </Heading>
         <AddButton
           onClick={() => {

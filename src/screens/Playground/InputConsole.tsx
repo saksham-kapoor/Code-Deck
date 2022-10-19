@@ -21,12 +21,15 @@ const Header = styled.div`
   font-size: 1.25rem;
   font-weight: 700;
 
-  span {
+  button {
     display: flex;
     align-items: center;
     gap: 0.4rem;
     font-size: 1rem;
     font-weight: 400;
+    background: transparent;
+    outline: 0;
+    border: 0;
 
     svg {
       font-size: 1.5rem;
@@ -40,6 +43,8 @@ const TextArea = styled.textarea`
   border: 0;
   outline: 0;
   font-size: 1.1rem;
+  padding: 0.25rem;
+  padding-top: 0.5rem;
 `;
 
 const InputConsole = () => {
@@ -47,10 +52,10 @@ const InputConsole = () => {
     <Console>
       <Header>
         Input:
-        <span>
+        <button>
           <BiImport />
           Import Input
-        </span>
+        </button>
       </Header>
       <TextArea></TextArea>
     </Console>

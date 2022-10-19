@@ -26,11 +26,9 @@ const InputWithSelect = styled.div`
   }
 `;
 
-const NewCard = ({ closeModal, identifer }: ModalProps) => {
-  const { folderId } = identifer;
-
+const NewFolderAndPlayground = ({ closeModal, identifer }: ModalProps) => {
   // access our card from folders state
-  const { folders, createNewPlayground } = useContext(PlaygroundContext)!;
+  const { createNewFolderAndPlayground } = useContext(PlaygroundContext)!;
 
   const languageOptions = [
     { value: "c++", label: "C++" },
@@ -39,7 +37,8 @@ const NewCard = ({ closeModal, identifer }: ModalProps) => {
     { value: "python", label: "Python" },
   ];
 
-  const [title, setTitle] = useState("");
+  const [folderTitle, setFolderTitle] = useState("");
+  const [cardTitle, setCardTitle] = useState("");
   const [language, setLanguage] = useState(languageOptions[0]);
 
   const handleLanguageChange = (selectedOption: any) => {
@@ -49,7 +48,7 @@ const NewCard = ({ closeModal, identifer }: ModalProps) => {
   return (
     <div>
       <Header>
-        <h2>Create New Playground</h2>
+        <h2>Create New Folder and Playground</h2>
         <CloseButton
           onClick={() => {
             closeModal();
@@ -59,21 +58,37 @@ const NewCard = ({ closeModal, identifer }: ModalProps) => {
         </CloseButton>
       </Header>
       <InputWithSelect>
+        <label>Enter Folder Name</label>
         <input
           type='text'
-          value={title}
+          value={folderTitle}
           onChange={(e) => {
-            setTitle(e.target.value);
+            setFolderTitle(e.target.value);
           }}
         />
+
+        <label>Enter Card Name</label>
+        <input
+          type='text'
+          value={cardTitle}
+          onChange={(e) => {
+            setCardTitle(e.target.value);
+          }}
+        />
+
         <Select
           options={languageOptions}
           value={language}
           onChange={handleLanguageChange}
         />
+
         <button
           onClick={() => {
-            createNewPlayground(folderId, title, language.value);
+            createNewFolderAndPlayground(
+              folderTitle,
+              cardTitle,
+              language.value
+            );
             closeModal();
           }}
         >
@@ -84,4 +99,4 @@ const NewCard = ({ closeModal, identifer }: ModalProps) => {
   );
 };
 
-export default NewCard;
+export default NewFolderAndPlayground;

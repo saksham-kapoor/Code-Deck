@@ -10,7 +10,6 @@ import styled from "styled-components";
 const MainApp = styled.div`
   display: grid;
   grid-template-columns: 2fr 1fr;
-  background: red;
   height: calc(100vh - 4.5rem);
 `;
 
