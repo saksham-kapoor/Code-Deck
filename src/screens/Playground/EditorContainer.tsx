@@ -75,6 +75,15 @@ const RunCode = styled.button`
   border-radius: 2rem;
 `;
 
+const SaveCode = styled.button`
+  padding: 0.4rem 1rem;
+  background-color: #0097d7 !important;
+  color: white;
+  font-weight: 700;
+  border-radius: 2rem;
+  border: 0;
+`;
+
 const SelectBars = styled.div`
   display: flex;
   align-items: center;
@@ -89,10 +98,23 @@ const SelectBars = styled.div`
   }
 `;
 
-const EditorContainer = () => {
-  const [selectedLanguage, setSelectedLanguage] = useState(null);
-  const [selectedTheme, setSelectedTheme] = useState(null);
+interface EditorContainerProps {
+  title: string;
+  language: string;
+  folderId: string;
+  playgroundId: string;
+  code: string;
+  editCardLanguage: (folderId: string, cardId: string, newLang: string) => void;
+}
 
+const EditorContainer: React.FC<EditorContainerProps> = ({
+  title,
+  language,
+  folderId,
+  playgroundId,
+  editCardLanguage,
+  code,
+}) => {
   const languageOptions = [
     { value: "c++", label: "C++" },
     { value: "java", label: "Java" },
@@ -111,6 +133,18 @@ const EditorContainer = () => {
     { value: "bespin", label: "bespin" },
   ];
 
+  const [selectedLanguage, setSelectedLanguage] = useState(() => {
+    for (let i = 0; i < languageOptions.length; i++) {
+      if (languageOptions[i].value === language) return languageOptions[i];
+    }
+    return languageOptions[0];
+  });
+
+  const [selectedTheme, setSelectedTheme] = useState({
+    value: "githubDark",
+    label: "githubDark",
+  });
+
   const handleChangeLanguage = (selectedOption: any) => {
     setSelectedLanguage(selectedOption);
   };
@@ -119,17 +153,46 @@ const EditorContainer = () => {
     setSelectedTheme(selectedOption);
   };
 
+  // import code
+  function getFile(event: any) {
+    const input = event.target;
+    if ("files" in input && input.files.length > 0) {
+      placeFileContent(
+        document.getElementById("content-target"),
+        input.files[0]
+      );
+    }
+  }
+
+  function placeFileContent(target: any, file: any) {
+    readFileContent(file)
+      .then((content) => {
+        console.log(content);
+      })
+      .catch((error) => console.log(error));
+  }
+
+  function readFileContent(file: any) {
+    const reader = new FileReader();
+    return new Promise((resolve, reject) => {
+      reader.onload = (event) => resolve(event!.target!.result);
+      reader.onerror = (error) => reject(error);
+      reader.readAsText(file);
+    });
+  }
+
   return (
     <StyledEditorContainer>
       {/* Upper Toolbar Begins */}
       <UpperToolbar>
         <Title>
-          <h3>Stack Implementation</h3>
+          <h3>{title}</h3>
           <button>
             <BiEditAlt />
           </button>
         </Title>
         <SelectBars>
+          <SaveCode>Save Code</SaveCode>
           <Select
             value={selectedLanguage}
             options={languageOptions}
@@ -145,7 +208,11 @@ const EditorContainer = () => {
       {/* Upper Toolbar Ends */}
 
       {/* Code Editor Begins */}
-      <CodeEditor />
+      <CodeEditor
+        currentLanguage={selectedLanguage.value}
+        currentTheme={selectedTheme.value}
+        currentCode={code}
+      />
       {/* Code Editor Ends */}
 
       {/* Lower Toolbar Begins */}
@@ -156,6 +223,13 @@ const EditorContainer = () => {
             Full Screen
           </button>
           <button>
+            <input
+              type='file'
+              accept='.txt'
+              id='input-file'
+              onChange={(e) => getFile(e)}
+            />
+            <p id='content-target'></p>
             <BiImport /> Import Code
           </button>
           <button>

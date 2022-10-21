@@ -23,15 +23,22 @@ const Playground = () => {
   const { folderId, playgroundId } = useParams();
 
   // access all playgrounds
-  const { folders } = useContext(PlaygroundContext)!;
-  const { title, language } =
+  const { folders, editCardLanguage } = useContext(PlaygroundContext)!;
+  const { title, language, code } =
     folders[folderId as string].items[playgroundId as string];
 
   return (
     <div>
       <Navbar />
       <MainApp>
-        <EditorContainer />
+        <EditorContainer
+          title={title}
+          language={language}
+          folderId={folderId as string}
+          playgroundId={playgroundId as string}
+          code={code as string}
+          editCardLanguage={editCardLanguage}
+        />
         <Consoles>
           <InputConsole />
           <OutputConsole />
